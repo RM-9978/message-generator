@@ -8,8 +8,10 @@ const userMood = (mood) => {
     }
 }
 
+//console.log(userMood('Happy')) // check;
+
 //Function to decide the computer's mood
-const compMood = () => {
+const computerMood = () => {
     let randomNum = Math.floor(Math.random() * 3) + 1;
     if (randomNum === 1) {
         return 'Happy';
@@ -20,57 +22,63 @@ const compMood = () => {
     }
 }
 
-/*const compMood = computerMood();
-const userMood = usersMood();*/
+//console.log(computerMood); //check
+
+//console.log(`User mood is ${userMood('Happy')} and Computer Mood is ${computerMood}`);
 
 //Responces
-const sympathy = "I'm sorry you're feeling down. Hope you feel better soon!🥺";
-const anger = "You're not the only having a hard time! Did you ever think it might suck for me too?😠";
-const apathy = "Okay, but what does that have to do with me?😕";
-const joy = "It really is a great day isn't it?☺️";
-const annoyed = "Well I guess one of us is happy.😒"
-const encourage = "Cheer up now! It's a great day!🤗"
-const livid = "What's with your face?! You bored of me being upset?! 🤬"
+const sympathy = "'I'm sorry you're feeling down. Hope you feel better soon!'🥺";
+const anger = "'You're not the only having a hard time! Did you ever think it might suck for me too?'😠";
+const apathy = "'Okay, but what does that have to do with me?'😕";
+const joy = "'It really is a great day isn't it?☺️'";
+const annoyed = "'Well I guess one of us is happy.'😒"
+const encourage = "'Cheer up now! It's a great day!'🤗"
+const livid = "'What's with your face?! You bored of me being upset?!' 🤬"
 const silence = "*An indifferent silence*";
 
 //Function to describe computer responses
-const responceMessage = () => {
-    if (userMood() === 'Upset' && compMood() === 'Happy') {
+const responceMessage = (userIs, computerIs) => {
+    if (userIs === 'Upset' && computerIs === 'Happy') {
         return sympathy;
     }
-    if (userMood() === 'Upset' && compMood() === 'Upset') {
+    if (userIs === 'Upset' && computerIs === 'Upset') {
         return anger;
     }
-    if (userMood() === 'Upset' && compMood() === 'Apathetic') {
+    if (userIs === 'Upset' && computerIs === 'Apathetic') {
         return apathy;
     }
-    if (userMood() === 'Happy' && compMood() === 'Happy') {
+    if (userIs === 'Happy' && computerIs === 'Happy') {
         return joy;
     }
-    if (userMood() === 'Happy' && compMood() === 'Upset') {
+    if (userIs === 'Happy' && computerIs === 'Upset') {
         return annoyed;
     }
-    if (userMood() === 'Happy' && compMood() === 'Apathetic') {
+    if (userIs === 'Happy' && computerIs === 'Apathetic') {
         return apathy;
     }
-    if (userMood() === 'Apathetic' && compMood() === 'Happy') {
+    if (userIs === 'Apathetic' && computerIs === 'Happy') {
         return encourage;
     }
-     if (userMood() === 'Apathetic' && compMood() === 'Upset') {
+     if (userIs === 'Apathetic' && computerIs === 'Upset') {
         return livid;
     }
-     if (userMood() === 'Apathetic' && compMood() === 'Apathetic') {
+     if (userIs === 'Apathetic' && computerIs === 'Apathetic') {
         return silence;
     }
 }
 
-userMood('Happy')
-const message = responceMessage()
-console.log(message);
-
 //the function that puts it all together
-/*const main = () => {
-    console.log(
-        `The user is feeling ${usersMood('Happy')}. The computer is feeling ${compMood}.
-         So the computer responds with '${message}'`);
-}*/
+//Change userMood here
+const main = () => {
+    let userIsFeeling = userMood('Happy'); 
+    let computerIsFeeling = computerMood(); 
+    console.log (
+       `The user is feeling ${userIsFeeling}. 
+        The computer is feeling ${computerIsFeeling}.
+        Therefore, the computer responds with
+        ${responceMessage(userIsFeeling, computerIsFeeling)}`);
+}
+
+
+//Implement
+main();
